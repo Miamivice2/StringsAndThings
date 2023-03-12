@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import org.codehaus.plexus.util.StringUtils;
+
 /**
  * @author tariq
  */
@@ -15,8 +17,18 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
-    }
+        int counter = 0;
+        String [] yZWords = input.split(" ");
+        for (int i = 0; i < yZWords.length; i++) {
+            if (yZWords[i].endsWith("y") || yZWords[i].endsWith("z")){
+                counter++;
+
+        }
+
+        }
+            return counter;
+        }
+
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -28,7 +40,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove,"");
     }
 
     /**
@@ -40,7 +52,10 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int i = StringUtils.countMatches(input,"is");
+        int j = StringUtils.countMatches(input,"not");
+
+        return i - j == 0;
     }
 
     /**
@@ -51,7 +66,15 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        for (int i = 0; i < input.length()-1; i++) {
+            if (input.charAt(i)=='g'&& input.charAt(i + 1)=='g'){
+                return true;
+            }
+
+        }
+
+
+        return false;
     }
 
 
@@ -63,6 +86,12 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int counter = 0;
+        for (int i = 0; i < input.length()-2; i++) {
+            if(input.charAt(i)== input.charAt(i + 1)&& input.charAt(i)== input.charAt(i + 2)){
+                counter ++;
+            }
+        }
+        return counter;
     }
 }
